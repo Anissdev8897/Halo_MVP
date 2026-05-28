@@ -1,0 +1,162 @@
+{
+  "system_version": "1.0",
+  "description": "XP gagnée pour la découverte de cartes et de points stratégiques. Encourage l'exploration et la reconnaissance.",
+
+  "principles": {
+    "first_time_only": "Chaque récompense d'exploration est attribuée UNE SEULE FOIS par joueur, par cible (map ou point stratégique).",
+    "validation_required": "Les récompenses 'recon report validated' nécessitent validation explicite par un chef de faction.",
+    "scout_division_bonus": "Joueurs des divisions axées reconnaissance (UNSC: ODST, 7th Marines scout role; Covenant: Ranger Corps, Spec Ops) ont +25% sur tous les bonus exploration."
+  },
+
+  "general_rewards": {
+    "first_op_on_new_map": {
+      "xp": 100,
+      "trigger": "Première participation à une Op sur une map non visitée par ce joueur",
+      "validation": "automatic (Sheet log)",
+      "description": "Le joueur découvre la map en condition opérationnelle."
+    },
+    "strategic_point_discovered": {
+      "xp": 25,
+      "trigger": "Le joueur passe par un point stratégique pré-marqué pour la première fois",
+      "validation": "manuel (SL signe en post-Op)",
+      "description": "Bonus pour exploration active hors-mission."
+    },
+    "recon_report_validated_by_command": {
+      "xp": 50,
+      "trigger": "Le joueur produit un rapport écrit (Discord) sur des informations tactiques d'une zone",
+      "validation": "manuel (chef de faction signe)",
+      "description": "Récompense les rapports utiles RP : positions ennemies, accès, faiblesses défensives.",
+      "max_per_op": 1
+    }
+  },
+
+  "max_session_exploration_xp": {
+    "value": 200,
+    "rationale": "Plafond pour éviter le grind exploration au détriment du combat / objectifs."
+  },
+
+  "maps_with_strategic_points": {
+    "fob_alpha": {
+      "canvas": "Forge World — Hemorrhage canyon",
+      "strategic_points": [
+        {
+          "name": "Sniper Ridge West",
+          "label": "ridge_w_recon",
+          "xp": 25,
+          "tactical_note": "Position dominante visuelle sur tout le FOB"
+        },
+        {
+          "name": "Generator Hut",
+          "label": "gen_hut_recon",
+          "xp": 25,
+          "tactical_note": "Point de sabotage potentiel"
+        },
+        {
+          "name": "Vehicle Road East",
+          "label": "veh_road_recon",
+          "xp": 25,
+          "tactical_note": "Route d'approche véhicule"
+        },
+        {
+          "name": "Extract Point Echo",
+          "label": "echo_recon",
+          "xp": 25,
+          "tactical_note": "Zone d'extraction Covenant"
+        },
+        {
+          "name": "Command Bunker rooftop",
+          "label": "bunker_top_recon",
+          "xp": 50,
+          "tactical_note": "Vue à 360° depuis le toit (accessible via grenade jump ou Mongoose stunt)"
+        }
+      ]
+    },
+    "powerhouse_stock": {
+      "canvas": "Map officielle Reach — Powerhouse",
+      "strategic_points": [
+        {
+          "name": "Tour Comm",
+          "xp": 25
+        },
+        {
+          "name": "Dam control room",
+          "xp": 25
+        },
+        {
+          "name": "Outdoor sniper post",
+          "xp": 25
+        }
+      ]
+    },
+    "boneyard_stock": {
+      "canvas": "Map officielle Reach — Boneyard",
+      "strategic_points": [
+        {
+          "name": "Carcasse de Frigate",
+          "xp": 25
+        },
+        {
+          "name": "Hangar central",
+          "xp": 50
+        },
+        {
+          "name": "Drop pod zone",
+          "xp": 25
+        }
+      ]
+    },
+    "spire_stock": {
+      "canvas": "Map officielle Reach — Spire",
+      "strategic_points": [
+        {
+          "name": "Top of Spire",
+          "xp": 50
+        },
+        {
+          "name": "Beach approach",
+          "xp": 25
+        },
+        {
+          "name": "Energy Core room",
+          "xp": 25
+        }
+      ]
+    }
+  },
+
+  "recon_report_template": {
+    "destination": "Discord canal #unsc-briefing-ops ou #cov-briefing-ops",
+    "format": [
+      "TITLE: Recon Report — {map} — {date}",
+      "AUTHOR: [GRADE] CallsignNom",
+      "ZONE: {zone décrite}",
+      "OBSERVATIONS: {détails tactiques}",
+      "RECOMMANDATION: {action proposée}",
+      "VALIDATION: { signature chef de faction si validé }"
+    ],
+    "examples": [
+      {
+        "title": "Recon Report — FOB Alpha — 2026-05-04",
+        "author": "[CPL HAWK] Reed-J",
+        "zone": "Generator Hut, secteur ouest du FOB",
+        "observations": "Hut isolée du périmètre principal, 8m de distance. Une seule entrée. Pas de couverture sur les approches. Caisse explosive visible. Spec Ops Covenant peut s'y infiltrer en Active Camo depuis Sniper Ridge.",
+        "recommandation": "Poster 1 Marine en garde permanente OU déplacer la caisse à l'intérieur du FOB. Prio défensive moyenne.",
+        "validation": "Signed: [LT REED-117] Cmdr — XP +50 awarded"
+      }
+    ]
+  },
+
+  "scout_division_bonuses": {
+    "unsc_scout_eligible": ["7th Marines (recon role)", "ODST"],
+    "covenant_scout_eligible": ["Ranger Corps", "Special Operations"],
+    "bonus_modifier": 1.25,
+    "applied_to": ["first_op_on_new_map", "strategic_point_discovered", "recon_report_validated_by_command"]
+  },
+
+  "see_also": [
+    "configs/xp_rewards_unsc.json",
+    "configs/xp_rewards_covenant.json",
+    "configs/leveling.json",
+    "configs/maps_catalog.md"
+  ]
+}

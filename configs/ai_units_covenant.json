@@ -1,0 +1,203 @@
+{
+  "system_version": "1.0",
+  "faction": "Covenant",
+  "description": "Catalogue des unités IA Covenant déployables. Référence pour le commandant d'opération.",
+
+  "technical_constraint_critical": {
+    "headline": "AI Covenant in Halo Reach customs = Firefight mode (officiellement) ou Mod Tools custom maps (sprint 5+).",
+    "details": [
+      "Firefight Reach permet vagues d'IA Covenant pré-paramétrées dans les Custom Game Settings.",
+      "Le HOST contrôle : type de squads par vague, ordre, count, skulls.",
+      "Forge PvP : pas d'IA placeable. Les Ops Sentinel / Skirmish / Invasion sont 100% PvP humain.",
+      "Pour avoir IA Covenant en plus de joueurs humains Covenant : impossible en Reach standard. Mod Tools peut éventuellement, via map custom, scripter des squads de support."
+    ],
+    "see_also_doc": "documentation/06_ai_npc_capabilities.md"
+  },
+
+  "deployment_methods": {
+    "method_1_firefight_mode": {
+      "available": true,
+      "constraint": "Vagues Covenant uniquement (pas mixte humain+IA Covenant).",
+      "host_controls_full": [
+        "Squad type par vague (ex: 'Lance de 6 Grunts + 2 Jackals')",
+        "Squad order (random / fixed)",
+        "Set count (1-3)",
+        "Round count par set (1-3)",
+        "Wave count par round (1-5)",
+        "Skulls (Iron, Famine, Tilt, Mythic, Cloud, Catch, Black Eye, Tough Luck, Cowbell, etc.)",
+        "Loadouts UNSC humains",
+        "Lives UNSC (0 = Endless mode)"
+      ]
+    },
+    "method_2_mod_tools_custom_map": {
+      "available": false,
+      "status": "Sprint 5+",
+      "potential": "Map custom avec patrouilles Covenant scriptées, garnisons Brutes, embuscades Élites Spec Ops, etc. Effort dev élevé."
+    }
+  },
+
+  "ai_unit_catalog": {
+    "grunt_minor": {
+      "name": "Grunt Minor",
+      "category": "infantry_chaff",
+      "weapon_default": "Plasma Pistol",
+      "hp_relative": "0.2x Élite",
+      "behavior": "panique facile, lance grenades en masse, fuit si commandant tué",
+      "xp_yield_to_unsc_killer": 5,
+      "deployment_cost_points": 1,
+      "available_in_firefight": true
+    },
+    "grunt_major": {
+      "name": "Grunt Major",
+      "category": "infantry_chaff_elite",
+      "weapon_default": "Needler ou Plasma Pistol",
+      "hp_relative": "0.3x Élite",
+      "behavior": "tactique limité, leader d'autres Grunts",
+      "xp_yield_to_unsc_killer": 8,
+      "deployment_cost_points": 2,
+      "available_in_firefight": true
+    },
+    "jackal": {
+      "name": "Jackal",
+      "category": "infantry_skirmish",
+      "weapon_default": "Plasma Pistol + bouclier énergétique",
+      "hp_relative": "0.3x Élite",
+      "behavior": "tient bouclier, rush en mêlée si bouclier détruit",
+      "xp_yield_to_unsc_killer": 8,
+      "deployment_cost_points": 2,
+      "available_in_firefight": true
+    },
+    "jackal_sniper": {
+      "name": "Jackal Sniper",
+      "category": "infantry_marksman",
+      "weapon_default": "Beam Rifle ou Focus Rifle",
+      "hp_relative": "0.4x Élite",
+      "behavior": "tireur d'élite, position élevée",
+      "xp_yield_to_unsc_killer": 15,
+      "deployment_cost_points": 3,
+      "available_in_firefight": true
+    },
+    "skirmisher": {
+      "name": "Skirmisher",
+      "category": "infantry_mobile",
+      "weapon_default": "Needler ou Plasma Repeater",
+      "hp_relative": "0.4x Élite",
+      "behavior": "très rapide, esquives, attaque en pack",
+      "xp_yield_to_unsc_killer": 10,
+      "deployment_cost_points": 2,
+      "available_in_firefight": true
+    },
+    "elite_minor": {
+      "name": "Élite Minor IA",
+      "category": "infantry_main",
+      "weapon_default": "Plasma Repeater ou Needle Rifle",
+      "hp_relative": "1.0x Élite (référence)",
+      "behavior": "tactique, cover, assault, rage berserker à low HP",
+      "xp_yield_to_unsc_killer": 15,
+      "deployment_cost_points": 4,
+      "available_in_firefight": true
+    },
+    "elite_major": {
+      "name": "Élite Major IA",
+      "category": "infantry_main_elite",
+      "weapon_default": "Plasma Rifle, Concussion Rifle ou Energy Sword",
+      "hp_relative": "1.3x Élite Minor",
+      "behavior": "tactique avancé, leadership de groupe",
+      "xp_yield_to_unsc_killer": 20,
+      "deployment_cost_points": 6,
+      "available_in_firefight": true
+    },
+    "elite_ultra": {
+      "name": "Élite Ultra IA",
+      "category": "elite_command",
+      "weapon_default": "Energy Sword + Plasma Pistol overcharged",
+      "hp_relative": "1.5x Élite Minor",
+      "behavior": "très agressif, leadership pack, hard counter aux Spartans non-équipés",
+      "xp_yield_to_unsc_killer": 30,
+      "deployment_cost_points": 8,
+      "available_in_firefight": true
+    },
+    "elite_zealot_ai": {
+      "name": "Élite Zealot IA (mini-boss)",
+      "category": "boss_lieutenant",
+      "weapon_default": "Energy Sword + Plasma Repeater",
+      "hp_relative": "2.0x Élite Minor",
+      "behavior": "fanatique, charge frontale, ne fuit jamais",
+      "xp_yield_to_unsc_killer": 50,
+      "deployment_cost_points": 12,
+      "available_in_firefight": true,
+      "note": "Apparaît en Bonus Round Firefight"
+    },
+    "hunter_pair": {
+      "name": "Hunter (paire)",
+      "category": "heavy_armor",
+      "weapon_default": "Fuel Rod Cannon + Shield Arm",
+      "hp_relative": "5.0x Élite Minor (par hunter)",
+      "behavior": "lent, blindé, attaque coordonnée en paire",
+      "xp_yield_to_unsc_killer": 40,
+      "deployment_cost_points": 14,
+      "available_in_firefight": true,
+      "note": "Toujours en paire — 'bond pair'"
+    },
+    "brute_minor": {
+      "name": "Brute Minor",
+      "category": "infantry_heavy",
+      "weapon_default": "Spiker ou Brute Plasma Rifle",
+      "hp_relative": "0.8x Élite Minor",
+      "behavior": "agressif, charge mêlée, rage à low HP",
+      "xp_yield_to_unsc_killer": 25,
+      "deployment_cost_points": 6,
+      "available_in_firefight_dlc": true,
+      "dlc_required": "Defiant Map Pack"
+    },
+    "brute_chieftain_boss": {
+      "name": "Brute Chieftain",
+      "category": "boss",
+      "weapon_default": "Gravity Hammer ou Plasma Cannon",
+      "hp_relative": "4.0x Élite Minor",
+      "behavior": "berserker, knockback radial, vrai boss",
+      "xp_yield_to_unsc_killer": 80,
+      "deployment_cost_points": 18,
+      "available_in_firefight": true,
+      "note": "Apparaît rarement en Bonus Round"
+    },
+    "engineer": {
+      "name": "Engineer (Huragok) IA",
+      "category": "support_buff",
+      "weapon_default": "n/a (donne shield buff aux alliés)",
+      "hp_relative": "1.0x Élite Minor (mais flotte, fuit)",
+      "behavior": "soutien, shield buff aux alliés à proximité",
+      "xp_yield_to_unsc_killer": 30,
+      "deployment_cost_points": 5,
+      "available_in_firefight": true,
+      "note": "Tuer un Engineer prive les alliés Covenant de leur shield buff = priorité tactique"
+    }
+  },
+
+  "firefight_squad_examples": {
+    "easy_starter_wave": ["6 Grunt Minor + 2 Jackal"],
+    "medium_pressure_wave": ["3 Élite Minor + 4 Grunt Major"],
+    "hard_assault_wave": ["2 Élite Major + 1 Élite Ultra + 4 Skirmisher"],
+    "boss_round": ["1 Brute Chieftain + 4 Brute Minor (DLC requis)"],
+    "hunter_round": ["1 Hunter Pair (= 2 Hunters)"]
+  },
+
+  "deployment_points_system": {
+    "description": "Quand le commandant d'opération a accès à du custom (Firefight, Mod Tools), il distribue des points pour équilibrer.",
+    "default_points_per_op": {
+      "firefight_easy": 30,
+      "firefight_medium": 50,
+      "firefight_hard": 80,
+      "firefight_legendary": 120,
+      "mod_tools_custom_pvp_op": 24
+    },
+    "balancing_principle": "Si Covenant manque de joueurs humains (1 sur 4 attendus), commandant peut déployer 12 points d'IA Covenant en garnison. En Sentinel par exemple : 2 Élites Minor (8 points) + 2 Jackals (4 points) gardent la zone arrière."
+  },
+
+  "see_also": [
+    "configs/ai_units_unsc.json",
+    "configs/xp_rewards_unsc.json",
+    "documentation/06_ai_npc_capabilities.md",
+    "documentation/ai_xp_system.md"
+  ]
+}

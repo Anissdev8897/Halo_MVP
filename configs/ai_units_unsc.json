@@ -1,0 +1,115 @@
+{
+  "system_version": "1.0",
+  "faction": "UNSC",
+  "description": "Catalogue des unités IA UNSC déployables. Référence pour le commandant d'opération qui équilibre les Ops.",
+
+  "technical_constraint_critical": {
+    "headline": "AI in Halo Reach customs = Firefight mode ONLY (et Mod Tools custom maps).",
+    "details": [
+      "Forge Reach n'autorise PAS le placement libre d'IA en customs PvP standards.",
+      "Les IA UNSC sont disponibles UNIQUEMENT dans :",
+      "  1. Campagne co-op (script fixe par mission, non personnalisable),",
+      "  2. Custom Firefight maps via Mod Tools (effort dev 2-3 mois, hors MVP v0.1).",
+      "Pour les Ops PvP type Sentinel/Skirmish/Invasion : AUCUNE IA UNSC déployable runtime.",
+      "Le 'host ajoute des IA' est donc valide pour Op type Firefight (UNSC vs IA Covenant) et pour des Ops Mod Tools custom à terme."
+    ],
+    "see_also_doc": "documentation/06_ai_npc_capabilities.md"
+  },
+
+  "deployment_methods": {
+    "method_1_firefight_mode": {
+      "available": true,
+      "constraint": "UNSC AI = joueurs humains UNSC. Pas de placement IA UNSC en plus des humains.",
+      "host_controls": ["loadouts UNSC", "lives", "skulls", "wave settings (mais cibles AI seulement Covenant)"]
+    },
+    "method_2_campaign_co_op": {
+      "available": true,
+      "constraint": "IA UNSC alliées scriptées dans la mission (Marines, Noble Team). Ni ajoutables ni retirables. Joueurs incarnent Spartans co-op.",
+      "host_controls": ["mission choisie", "skulls", "difficulty"]
+    },
+    "method_3_mod_tools_custom_map": {
+      "available": false,
+      "status": "Sprint 5+ (semaine 16+) si équipe Mod Tools constituée",
+      "potential": "Maps custom avec IA UNSC pré-scriptées (Marines en garnison, ODST en renfort scénarisé)."
+    }
+  },
+
+  "ai_unit_catalog": {
+    "marine_basic": {
+      "name": "Marine UNSC standard",
+      "category": "infantry",
+      "weapon_default": "Assault Rifle",
+      "hp_relative": "0.5x Spartan",
+      "behavior": "patrouille, tir réactif, cover sommaire",
+      "xp_yield_to_covenant_killer": 8,
+      "deployment_cost_points": 1,
+      "use_cases": [
+        "Garnison FOB en mission campagne",
+        "Renfort scripté en Op narrative custom (Mod Tools)"
+      ]
+    },
+    "marine_veteran": {
+      "name": "Marine vétéran (sergent IA)",
+      "category": "infantry_elite",
+      "weapon_default": "Battle Rifle ou DMR",
+      "hp_relative": "0.7x Spartan",
+      "behavior": "tactique, flanking, encadre Marines basics",
+      "xp_yield_to_covenant_killer": 12,
+      "deployment_cost_points": 2,
+      "use_cases": ["Sub-officer scripté Op narrative"]
+    },
+    "odst_trooper": {
+      "name": "ODST Helljumper",
+      "category": "spec_ops",
+      "weapon_default": "Silenced SMG ou Magnum",
+      "hp_relative": "0.8x Spartan",
+      "behavior": "agile, coordonné en escouade, drop pod entry possible",
+      "xp_yield_to_covenant_killer": 15,
+      "deployment_cost_points": 3,
+      "use_cases": ["Renfort élite scripté", "Insertion dramatique RP"]
+    },
+    "spartan_iii_ai": {
+      "name": "Spartan-III IA",
+      "category": "elite",
+      "weapon_default": "DMR + Magnum, ou Sniper",
+      "hp_relative": "1.0x Spartan",
+      "behavior": "lethal, autonome, choix tactique avancé",
+      "xp_yield_to_covenant_killer": 35,
+      "deployment_cost_points": 8,
+      "use_cases": ["Cible high-value RP (Op assassinat)", "Allié rare en garnison"]
+    },
+    "marine_pilot_falcon_ai": {
+      "name": "Pilote Falcon IA",
+      "category": "vehicle_pilot",
+      "weapon_default": "n/a (passager du Falcon)",
+      "hp_relative": "0.5x Spartan",
+      "behavior": "pilotage scripté (pré-set path)",
+      "xp_yield_to_covenant_killer": 10,
+      "deployment_cost_points": 4,
+      "use_cases": ["Insertion / extraction RP"]
+    }
+  },
+
+  "deployment_points_system": {
+    "description": "Ressource fictive utilisée par le commandant d'opération pour équilibrer une Op asymétrique. Calcul manuel par le host.",
+    "default_points_per_op": {
+      "small_op_4v4": 6,
+      "medium_op_8v8": 12,
+      "large_op_12v4": 16,
+      "firefight_4players": 30
+    },
+    "deployment_rules": [
+      "Chef d'opération distribue les points entre les unités IA déployables",
+      "Une fois déployées, les unités sont permanentes pour la durée de l'Op",
+      "Pas d'ajout en cours de session sauf événement RP scénarisé pré-validé"
+    ],
+    "balancing_principle": "Si UNSC manque de joueurs (8 humains au lieu de 12), commandant peut déployer 4 Marines AI en garnison. En cours d'Op, ces Marines AI ne peuvent pas être 'reload'."
+  },
+
+  "see_also": [
+    "configs/ai_units_covenant.json",
+    "configs/xp_rewards_covenant.json",
+    "documentation/06_ai_npc_capabilities.md",
+    "documentation/ai_xp_system.md"
+  ]
+}

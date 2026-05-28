@@ -1,0 +1,63 @@
+{
+  "system_version": "1.0",
+  "description": "Système de niveau basé sur l'XP cumulée. INDEPENDENT du rang militaire. Le niveau monte automatiquement avec l'activité. Le rang militaire est manuel et attribué par les chefs de faction.",
+  "decoupling_principle": {
+    "level": "automatique, calculé depuis XP cumulée (Google Sheet)",
+    "rank": "manuel, attribué par chef de faction (voir promotion_rules.json)",
+    "rule": "Un joueur peut être niveau 30 et rester Recruit. Un joueur peut être Sergeant à niveau 12. Le niveau prouve l'activité, le rang prouve la confiance."
+  },
+
+  "max_level": 50,
+
+  "level_thresholds": [
+    { "level": 1,  "xp_required": 0,     "tier": "Bronze",   "unlocks": "loadouts de base" },
+    { "level": 2,  "xp_required": 200,   "tier": "Bronze",   "unlocks": "—" },
+    { "level": 3,  "xp_required": 480,   "tier": "Bronze",   "unlocks": "—" },
+    { "level": 4,  "xp_required": 840,   "tier": "Bronze",   "unlocks": "—" },
+    { "level": 5,  "xp_required": 1280,  "tier": "Bronze",   "unlocks": "rôle Marksman accessible (si grade le permet)" },
+    { "level": 6,  "xp_required": 1800,  "tier": "Bronze",   "unlocks": "—" },
+    { "level": 7,  "xp_required": 2400,  "tier": "Bronze",   "unlocks": "—" },
+    { "level": 8,  "xp_required": 3080,  "tier": "Bronze",   "unlocks": "—" },
+    { "level": 9,  "xp_required": 3840,  "tier": "Bronze",   "unlocks": "—" },
+    { "level": 10, "xp_required": 4680,  "tier": "Silver",   "unlocks": "rôle Sniper accessible (si grade le permet); peut piloter Warthog" },
+    { "level": 12, "xp_required": 6520,  "tier": "Silver",   "unlocks": "—" },
+    { "level": 15, "xp_required": 9750,  "tier": "Silver",   "unlocks": "rôle Saboteur accessible" },
+    { "level": 18, "xp_required": 13320, "tier": "Silver",   "unlocks": "—" },
+    { "level": 20, "xp_required": 15800, "tier": "Gold",     "unlocks": "rôle Heavy Weapons accessible; éligible Pilot véhicule lourd" },
+    { "level": 22, "xp_required": 18280, "tier": "Gold",     "unlocks": "—" },
+    { "level": 25, "xp_required": 22250, "tier": "Gold",     "unlocks": "—" },
+    { "level": 28, "xp_required": 26320, "tier": "Gold",     "unlocks": "—" },
+    { "level": 30, "xp_required": 29100, "tier": "Platinum", "unlocks": "rôle Infiltrator accessible; éligible Strike Team Leader (Covenant) si grade le permet" },
+    { "level": 33, "xp_required": 33330, "tier": "Platinum", "unlocks": "—" },
+    { "level": 35, "xp_required": 36240, "tier": "Platinum", "unlocks": "—" },
+    { "level": 38, "xp_required": 40700, "tier": "Platinum", "unlocks": "—" },
+    { "level": 40, "xp_required": 43760, "tier": "Diamond",  "unlocks": "rôle Operation Commander éligible (si grade Lieutenant+/Zealot+)" },
+    { "level": 42, "xp_required": 46860, "tier": "Diamond",  "unlocks": "—" },
+    { "level": 45, "xp_required": 51570, "tier": "Diamond",  "unlocks": "—" },
+    { "level": 48, "xp_required": 56360, "tier": "Diamond",  "unlocks": "—" },
+    { "level": 50, "xp_required": 59600, "tier": "Onyx",     "unlocks": "Veteran badge; vote consultatif sur balance des Ops" }
+  ],
+
+  "level_formula": "Approximation polynomiale : xp_required ≈ 200 * level^1.6. Les seuils ci-dessus sont arrondis pour lisibilité.",
+
+  "level_unlocks_explanation": {
+    "rule": "Le niveau ne donne JAMAIS un rang militaire. Il donne uniquement accès à des RÔLES IN-GAME. Le rang militaire reste exigé en parallèle.",
+    "example_1": "Un joueur niveau 20 mais grade Recruit ne peut PAS prendre le rôle Heavy Weapons (qui exige Sergeant). Il devra attendre une promotion manuelle.",
+    "example_2": "Un joueur niveau 5 mais grade Sergeant (rare, promu très tôt) peut prendre Squad Leader si le SL/Officer l'autorise. Niveau 5 ne bloque que Sniper/Heavy.",
+    "intersection": "Un rôle est accessible si (grade_minimum_role <= grade_joueur) ET (level_minimum_role <= level_joueur)."
+  },
+
+  "level_decay": {
+    "enabled": false,
+    "note": "Pas de décroissance d'XP. Une fois un niveau atteint, il est conservé. Le rang lui peut être rétrogradé (manuel)."
+  },
+
+  "see_also": [
+    "configs/xp_rewards_unsc.json",
+    "configs/xp_rewards_covenant.json",
+    "configs/promotion_rules.json",
+    "configs/grades.md",
+    "configs/roles.md",
+    "documentation/leveling_vs_rank.md"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "system_version": "1.0",
+  "faction": "UNSC",
+  "description": "XP gagnée par un joueur UNSC pour ses actions. Tracking dans Google Sheet (Mode B).",
+
+  "rules": {
+    "player_kills_dominate_ai_kills": "Tuer un joueur donne TOUJOURS plus d'XP que tuer une IA équivalente. Pas de farm IA possible pour rattraper l'XP de PvP.",
+    "ai_xp_cap_per_session": "Plafond IA = 30% de l'XP totale de la session. Au-delà, les kills IA suivants sont comptés à 50% de leur valeur.",
+    "objectives_priority": "Les objectifs RP donnent autant ou plus d'XP que les simples kills. Le RP > le farm.",
+    "applies_only_in_mode_ac_off": true
+  },
+
+  "kills_vs_player_covenant": {
+    "minor": 30,
+    "major": 50,
+    "ultra": 70,
+    "spec_ops_officer": 120,
+    "zealot": 180,
+    "field_marshal": 300,
+    "note": "Tuer un joueur Covenant rapporte plus d'XP que tuer une IA Élite équivalente. Cf. comparaison ci-dessous."
+  },
+
+  "kills_vs_ai_covenant": {
+    "grunt": 5,
+    "jackal": 8,
+    "skirmisher": 10,
+    "elite_minor": 15,
+    "elite_major": 20,
+    "elite_ultra": 30,
+    "brute": 25,
+    "brute_chieftain_boss": 80,
+    "hunter": 40,
+    "comparison": "Joueur Élite Major (50 XP) > IA Élite Major (20 XP) → ratio ~2.5x"
+  },
+
+  "assists": {
+    "player_assist_pct": 50,
+    "ai_assist_pct": 30,
+    "note": "% de la valeur du kill, attribué au damage dealer non-finisher."
+  },
+
+  "objectives": {
+    "flag_defended_full_round": 200,
+    "flag_returned_after_carry": 75,
+    "asset_protected_critical": 100,
+    "sabotage_prevented": 75,
+    "round_won": 100,
+    "round_lost_honorable": 30,
+    "round_won_with_low_casualties": 50
+  },
+
+  "exploration": {
+    "first_op_on_new_map": 100,
+    "strategic_point_discovered": 25,
+    "recon_report_validated_by_command": 50,
+    "scout_division_bonus": "+25% sur tous les bonus exploration si division 7th Marines (recon role) ou ODST",
+    "max_exploration_xp_per_session": 200
+  },
+
+  "time_participation": {
+    "xp_per_minute_present": 8,
+    "max_per_session_25min": 200,
+    "afk_threshold_pct": 50,
+    "afk_penalty": "XP_session = 0 si AFK > 50%"
+  },
+
+  "role_bonuses": {
+    "operation_commander": 100,
+    "squad_leader": 75,
+    "fire_team_leader": 40,
+    "designated_marksman": 30,
+    "sniper": 50,
+    "heavy_weapons": 50,
+    "shotgun_specialist": 30,
+    "pilot_vehicle": 40,
+    "gunner_vehicle": 20,
+    "saboteur": 60,
+    "infiltrator": 50,
+    "combat_medic_rp": 30,
+    "engineer_rp": 30,
+    "rifleman_default": 0
+  },
+
+  "discipline_bonuses": {
+    "zero_violation_rp": 50,
+    "radio_comms_respected": 25,
+    "mvp_vote_winner": 100
+  },
+
+  "streak_bonuses": {
+    "first_op_player_lifetime": "XP_session_total * 1.5",
+    "five_consecutive_ops_in_14d": 200,
+    "mentor_rookie_first_op": 50
+  },
+
+  "penalties": {
+    "team_kill_intentional": -200,
+    "metagaming_other_squad_voice": "XP_session * 0.5",
+    "afk_over_50pct": "XP_session = 0",
+    "insubordination_serious": -100,
+    "in_game_chat_insult": -50
+  },
+
+  "session_xp_cap": {
+    "min": 0,
+    "max": 600,
+    "exception": "Bonus 'first op lifetime' peut dépasser 600 (×1.5)"
+  },
+
+  "see_also": [
+    "configs/xp_rewards_covenant.json",
+    "configs/leveling.json",
+    "configs/ai_units_covenant.json",
+    "configs/map_discovery_xp.json",
+    "configs/xp_system.md (rappel structure Google Sheet)"
+  ]
+}

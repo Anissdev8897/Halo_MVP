@@ -1,0 +1,178 @@
+{
+  "system_version": "1.0",
+  "description": "Règles de promotion militaire. TOUTES les promotions sont MANUELLES, attribuées par les chefs de faction. Le niveau (level) du joueur est INDICATIF, jamais conditionnel.",
+
+  "core_principle": {
+    "manual_only": true,
+    "explanation": "Le système de promotion est entièrement entre les mains des chefs de faction. Aucun grade ne se débloque automatiquement avec un seuil de niveau ou d'XP. Les chiffres ci-dessous sont des RECOMMANDATIONS minimales, pas des automatismes.",
+    "rationale": "Un joueur peut être très actif (haut niveau) mais inadapté au commandement. Inversement, un joueur peu joueur peut avoir un excellent jugement RP qui mérite une promotion."
+  },
+
+  "unsc_promotions": {
+    "recruit_to_private": {
+      "minimum_level": 2,
+      "minimum_ops_completed": 1,
+      "minimum_days_in_rank": 7,
+      "approval_authority": ["fire_team_commander", "battalion_commander", "field_commander"],
+      "approval_count_required": 1,
+      "additional_requirements": ["RP rules read & validated", "first Op debriefing attended"]
+    },
+    "private_to_corporal": {
+      "minimum_level": 5,
+      "minimum_ops_completed": 5,
+      "minimum_days_in_rank": 14,
+      "approval_authority": ["battalion_commander", "field_commander"],
+      "approval_count_required": 1,
+      "additional_requirements": ["1 Op réussie en rôle Fire Team Leader", "Comportement RP validé sur 5 Ops"]
+    },
+    "corporal_to_sergeant": {
+      "minimum_level": 10,
+      "minimum_ops_completed": 10,
+      "minimum_days_in_rank": 21,
+      "approval_authority": ["battalion_commander", "field_commander"],
+      "approval_count_required": 1,
+      "additional_requirements": ["Recommandation explicite d'un Lieutenant ou Captain", "Démontré leadership en fire team"]
+    },
+    "sergeant_to_lieutenant": {
+      "minimum_level": 20,
+      "minimum_ops_completed": 20,
+      "minimum_days_in_rank": 30,
+      "approval_authority": ["field_commander"],
+      "approval_count_required": 1,
+      "additional_requirements": [
+        "5 Ops en tant que Squad Leader",
+        "Vote favorable de 2 Lieutenants ou Captains actifs",
+        "Quota actif < 4 (sinon attente)"
+      ]
+    },
+    "lieutenant_to_captain": {
+      "minimum_level": 30,
+      "minimum_ops_completed": 40,
+      "minimum_days_in_rank": 60,
+      "approval_authority": ["field_commander", "command_staff"],
+      "approval_count_required": "unanime",
+      "additional_requirements": [
+        "10 Ops en tant que SL",
+        "Vote unanime du Command Staff",
+        "Quota actif < 2",
+        "Engagement écrit à servir comme Battalion ou Field Commander si désigné"
+      ]
+    },
+    "promotion_to_field_commander": {
+      "scope": "rôle de leadership, pas un grade",
+      "minimum_rank": "Captain",
+      "selection": "Vote du Command Staff parmi les Captains actifs",
+      "term_months": 3
+    }
+  },
+
+  "covenant_promotions": {
+    "minor_to_major": {
+      "minimum_level": 2,
+      "minimum_ops_completed": 1,
+      "minimum_days_in_rank": 7,
+      "approval_authority": ["strike_team_leader_role", "council_zealot", "high_council_member"],
+      "approval_count_required": 1,
+      "additional_requirements": ["RP rules read", "Cérémonie d'engagement effectuée (rite RP)"]
+    },
+    "major_to_ultra": {
+      "minimum_level": 5,
+      "minimum_ops_completed": 5,
+      "minimum_days_in_rank": 14,
+      "approval_authority": ["council_zealot", "high_council_member"],
+      "approval_count_required": 1,
+      "additional_requirements": [
+        "1 victoire individuelle 'kill notable' (capture flag, sniper kill chain, sabotage réussi)",
+        "Comportement RP martial validé"
+      ]
+    },
+    "ultra_to_spec_ops_officer": {
+      "minimum_level": 10,
+      "minimum_ops_completed": 10,
+      "minimum_days_in_rank": 21,
+      "approval_authority": ["council_zealot", "high_council_member"],
+      "approval_count_required": 1,
+      "additional_requirements": [
+        "2 missions infiltration réussies (Saboteur ou Designated Sharpshooter)",
+        "Parrainage d'un Zealot",
+        "Quota < 6"
+      ]
+    },
+    "spec_ops_officer_to_zealot": {
+      "minimum_level": 22,
+      "minimum_ops_completed": 22,
+      "minimum_days_in_rank": 30,
+      "approval_authority": ["high_council_member"],
+      "approval_count_required": 1,
+      "additional_requirements": [
+        "6 victoires en Strike Team Leader",
+        "Serment de Zealot prononcé en cérémonie",
+        "Quota < 3"
+      ]
+    },
+    "zealot_to_field_marshal": {
+      "minimum_level": 35,
+      "minimum_ops_completed": 45,
+      "minimum_days_in_rank": 60,
+      "approval_authority": ["high_council_member", "command_staff"],
+      "approval_count_required": "unanime",
+      "additional_requirements": [
+        "Dominance martiale prouvée (top 3 kill ratio sur 10 Ops)",
+        "Vote unanime de tous les Zealots actifs",
+        "Quota < 1",
+        "Engagement à servir comme High Council Member si désigné"
+      ]
+    },
+    "promotion_to_high_council": {
+      "scope": "rôle de leadership, pas un grade",
+      "minimum_rank": "Field Marshal",
+      "selection": "Vote unanime des Zealots actifs",
+      "term_months": 3
+    }
+  },
+
+  "cooldowns": {
+    "between_promotions_same_player": "14 days minimum (toutes factions, tous grades)",
+    "rationale": "Évite le farming intensif et les promotions précipitées."
+  },
+
+  "demotion_rules": {
+    "automatic_demotion": false,
+    "manual_demotion_grounds": [
+      "Insubordination grave répétée",
+      "Comportement RP non conforme aux attentes du rang",
+      "Inactivité > 60 jours sans motif",
+      "Sanction disciplinaire majeure",
+      "Demande personnelle (rétrogradation volontaire pour faciliter le RP)"
+    ],
+    "demotion_authority": ["field_commander", "high_council_member", "command_staff"],
+    "appeal_window_days": 14
+  },
+
+  "level_decoupling_examples": {
+    "example_1": {
+      "scenario": "Joueur niveau 25, grade Recruit",
+      "explanation": "Très actif, gros farmer, mais le chef de faction n'a pas validé sa montée en grade. C'est volontaire et acceptable. Le niveau est sa fierté individuelle. Le grade est son utilité hiérarchique.",
+      "valid": true
+    },
+    "example_2": {
+      "scenario": "Joueur niveau 8, grade Sergeant",
+      "explanation": "Joue peu mais a démontré un excellent leadership et jugement RP. Promu rapidement par le Field Commander. Acceptable.",
+      "valid": true,
+      "caveat": "Doit quand même atteindre level 10 pour débloquer le rôle in-game Sniper si besoin (intersection level + grade pour les rôles)."
+    },
+    "example_3": {
+      "scenario": "Joueur niveau 50, grade Recruit",
+      "explanation": "Hyperactif mais comportemental problématique. Le chef de faction le maintient au plus bas grade. Acceptable mais à reconsidérer périodiquement.",
+      "valid": true
+    }
+  },
+
+  "see_also": [
+    "configs/leveling.json",
+    "configs/grades.md",
+    "configs/faction_leadership.json",
+    "documentation/leveling_vs_rank.md",
+    "documentation/faction_leader_rules.md"
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "system_version": "1.0",
+  "description": "Définition des chefs de faction et de leurs permissions. Ces rôles sont au-dessus des grades militaires individuels — ils incarnent l'autorité opérationnelle et RP de la faction.",
+
+  "principles": {
+    "leadership_role_vs_rank": "Un chef de faction OCCUPE un grade militaire (Captain UNSC, Field Marshal Covenant). Le rôle de leadership s'ajoute. Tous les Captains UNSC ne sont pas chefs de faction — un seul l'est à la fois.",
+    "promotion_authority": "Les chefs de faction ont l'AUTORITÉ FINALE sur les promotions de leur faction. Ils peuvent promouvoir manuellement, peu importe le niveau XP du joueur (le niveau est indicatif, pas conditionnel).",
+    "ai_deployment_authority": "Les chefs de faction ont l'autorité finale sur l'équilibrage IA pendant les Ops (Firefight, Mod Tools custom). Le host individuel suggère, le chef valide.",
+    "rp_validation": "Validation des récompenses RP, exploration, badges spéciaux."
+  },
+
+  "unsc_leadership": {
+    "field_commander": {
+      "title": "UNSC Field Commander",
+      "rank_required": "Captain",
+      "max_concurrent": 1,
+      "selection": "Vote du Command Staff parmi tous les Captains actifs",
+      "term_duration_months": 3,
+      "renewable": true,
+      "responsibilities": [
+        "Validation finale des promotions Sergeant → Lieutenant et Lieutenant → Captain",
+        "Allocation des points de déploiement IA pour Ops Firefight UNSC",
+        "Validation des récompenses RP et exploration",
+        "Convocation du Council UNSC (réunion hebdomadaire stratégique)",
+        "Représentation officielle de l'UNSC dans les négociations cross-faction (debriefing, événements communs)"
+      ],
+      "powers": [
+        "Promote / demote (avec audit log)",
+        "Approve / deny division transfer",
+        "Veto sur affectation de SL d'une Op",
+        "Allocate AI deployment points (Op Firefight)",
+        "Sign exploration rewards"
+      ]
+    },
+    "battalion_commander": {
+      "title": "UNSC Battalion Commander",
+      "rank_required": "Lieutenant",
+      "max_concurrent": 2,
+      "selection": "Désignés par Field Commander",
+      "term_duration_months": 2,
+      "responsibilities": [
+        "Commandement opérationnel de 1-2 squads",
+        "Validation des promotions Corporal → Sergeant",
+        "Recommandation au Field Commander pour promotions supérieures",
+        "Conduite des debriefings post-Op majeurs"
+      ],
+      "powers": [
+        "Promote (Corporal → Sergeant)",
+        "Recommend higher promotions",
+        "Validate role assignments per Op"
+      ]
+    },
+    "fire_team_commander": {
+      "title": "UNSC Fire Team Commander",
+      "rank_required": "Sergeant",
+      "max_concurrent": 4,
+      "selection": "Désignés ad hoc par Battalion ou Field Commander pour une Op",
+      "term_duration": "per_op",
+      "responsibilities": [
+        "Commandement d'une fire team de 3-4 hommes",
+        "Reporting Sheet post-Op (XP de leurs hommes)"
+      ],
+      "powers": [
+        "Recommend Recruit → Private",
+        "Sign per-Op XP rewards in Sheet"
+      ]
+    }
+  },
+
+  "covenant_leadership": {
+    "high_council_member": {
+      "title": "Field Marshal of the High Council",
+      "rank_required": "Field Marshal",
+      "max_concurrent": 1,
+      "selection": "Élu unanimement par tous les Zealots actifs",
+      "term_duration_months": 3,
+      "renewable": true,
+      "responsibilities": [
+        "Validation finale des promotions Spec Ops Officer → Zealot et Zealot → Field Marshal",
+        "Allocation des points de déploiement IA pour Ops Firefight Covenant (rare, Op spéciale)",
+        "Représentation officielle Covenant dans les événements communs",
+        "Convocation du Conseil Covenant (réunion hebdomadaire)",
+        "Validation des édicts religieux et serments de Zealot"
+      ],
+      "powers": [
+        "Promote / demote (avec audit log)",
+        "Approve / deny division transfer",
+        "Veto sur affectation de Strike Team Leader",
+        "Allocate AI deployment points",
+        "Sign exploration / glory rewards"
+      ]
+    },
+    "council_zealot": {
+      "title": "Council Zealot",
+      "rank_required": "Zealot",
+      "max_concurrent": 2,
+      "selection": "Désignés par Field Marshal",
+      "term_duration_months": 2,
+      "responsibilities": [
+        "Commandement d'une cellule (2 strike teams)",
+        "Validation des promotions Ultra → Spec Ops Officer",
+        "Recommandation au Field Marshal pour promotions supérieures",
+        "Conduite des cérémonies religieuses (rites de promotion, serments de combat)"
+      ],
+      "powers": [
+        "Promote (Ultra → Spec Ops Officer)",
+        "Recommend higher promotions",
+        "Validate role assignments per Op",
+        "Conduct religious ceremonies"
+      ]
+    },
+    "strike_team_leader_role": {
+      "title": "Strike Team Leader (per-Op)",
+      "rank_required": "Spec Ops Officer",
+      "max_concurrent": 2,
+      "selection": "Désignés par Council Zealot pour une Op",
+      "term_duration": "per_op",
+      "responsibilities": [
+        "Commandement strike team (4 Sangheili)",
+        "Reporting Sheet post-Op"
+      ],
+      "powers": [
+        "Recommend Minor → Major",
+        "Sign per-Op XP rewards in Sheet"
+      ]
+    }
+  },
+
+  "cross_faction_authority": {
+    "command_staff": {
+      "title": "Command Staff (community level, hors-RP)",
+      "description": "Au-dessus de tous les leaderships in-faction. Modération communauté, application règles RP, validation des bans, gestion technique du framework.",
+      "members": "Fondateurs / admins community",
+      "powers_unique": [
+        "Override toute décision de chef de faction sur grounds de modération",
+        "Ban communauté",
+        "Modification des règles RP du framework",
+        "Mise à jour des Game Packs"
+      ],
+      "boundary": "Ne se mêle PAS des décisions tactiques in-faction (qui est SL, qui prend tel rôle). Cela reste prérogative du chef de faction."
+    }
+  },
+
+  "permissions_matrix": {
+    "promote_recruit_to_private_or_minor_to_major": ["fire_team_commander", "strike_team_leader_role", "battalion_commander", "council_zealot", "field_commander", "high_council_member"],
+    "promote_corporal_to_sergeant_or_major_to_ultra": ["battalion_commander", "council_zealot", "field_commander", "high_council_member"],
+    "promote_sergeant_to_lieutenant_or_ultra_to_spec_ops_officer": ["field_commander", "high_council_member"],
+    "promote_lieutenant_to_captain_or_spec_ops_to_zealot": ["field_commander", "high_council_member"],
+    "promote_captain_to_field_commander_or_zealot_to_field_marshal": ["command_staff_only"],
+    "demote_or_strip_rank": ["field_commander", "high_council_member", "command_staff"],
+    "approve_division_transfer": ["field_commander", "high_council_member"],
+    "allocate_ai_deployment_points": ["field_commander", "high_council_member"],
+    "sign_exploration_xp": ["any_battalion_commander_or_zealot_council_or_higher"],
+    "ban_or_suspend_player": ["command_staff"]
+  },
+
+  "audit_logging": {
+    "where": "Google Sheet — onglet PromotionsLog + Discord #moderation-log",
+    "required_fields": ["date", "actor", "target", "action", "rationale"],
+    "retention": "permanent (pas de purge)"
+  },
+
+  "see_also": [
+    "configs/promotion_rules.json",
+    "configs/grades.md",
+    "configs/discord_structure.md",
+    "documentation/faction_leader_rules.md"
+  ]
+}

@@ -1,0 +1,13 @@
+﻿{
+    "pack_name":  "halo_reach_mvp",
+    "version":  "0.1",
+    "released":  "2026-05-28T01:22:16Z",
+    "packager_version":  "0.1.0",
+    "min_mcc_build":  "2025.08.16.178512.1-Release",
+    "target_dir_env":  "USERPROFILE",
+    "target_dir_path":  "AppData/LocalLow/MCC/Temporary/UserContent/HaloReach",
+    "payload":  [
+
+                ],
+    "post_install_message":  "Lance MCC via Steam, coche Anti-Cheat OFF, Custom Games -\u003e charge la map FOB Alpha + la variante Sentinel-Defense v1."
+}

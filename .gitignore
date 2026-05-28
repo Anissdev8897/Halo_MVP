@@ -1,0 +1,13 @@
+# HaloRP MVP — Git ignore
+
+# Build artefacts (ZIPs produits par tools/package_gamepack.ps1)
+dist/
+
+# Logs runtime (install.ps1 -> halorp_install.log côté joueur)
+*.log
+
+# OS / Editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

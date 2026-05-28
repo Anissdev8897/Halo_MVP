@@ -1,0 +1,113 @@
+{
+  "system_version": "1.0",
+  "faction": "Covenant",
+  "description": "XP gagnée par un joueur Covenant (Sangheili) pour ses actions. Tracking dans Google Sheet (Mode B).",
+
+  "rules": {
+    "player_kills_dominate_ai_kills": "Tuer un joueur donne TOUJOURS plus d'XP que tuer une IA équivalente.",
+    "ai_xp_cap_per_session": "Plafond IA = 30% de l'XP totale de la session. Au-delà, les kills IA suivants sont comptés à 50%.",
+    "asymmetric_balance": "Tuer un Spartan-III joueur (UNSC SPARTAN-III division) donne le plus gros multiplicateur — c'est le high-value target par excellence pour le Covenant.",
+    "objectives_priority": "Les objectifs RP (sabotage, capture, exfiltration) donnent autant ou plus que les kills."
+  },
+
+  "kills_vs_player_unsc": {
+    "recruit": 25,
+    "private": 30,
+    "corporal": 45,
+    "sergeant": 65,
+    "lieutenant": 100,
+    "captain": 150,
+    "spartan_iii_division_modifier": "+50% sur le kill, peu importe le grade (un Recruit SPARTAN-III donne 38 XP, un Sergeant SPARTAN-III donne 98)",
+    "operation_commander_role_modifier": "+100 XP supplémentaires si la cible portait le rôle Operation Commander dans la session",
+    "note": "Un Captain UNSC SPARTAN-III en rôle Operation Commander = 150 + 75 (Spartan modifier) + 100 (OC modifier) = 325 XP. Le high-value target ultime."
+  },
+
+  "kills_vs_ai_unsc": {
+    "marine_basic": 8,
+    "marine_veteran": 12,
+    "odst": 15,
+    "spartan_iii_ai": 35,
+    "comparison": "Joueur Captain UNSC (150 XP) >> IA Spartan-III (35 XP) → ratio ~4x"
+  },
+
+  "assists": {
+    "player_assist_pct": 50,
+    "ai_assist_pct": 30
+  },
+
+  "objectives": {
+    "flag_captured_and_extracted": 250,
+    "sabotage_completed": 150,
+    "silent_infiltration_5min": 100,
+    "vehicle_destroyed_unsc_warthog": 40,
+    "vehicle_destroyed_unsc_pelican_rare": 100,
+    "round_won": 100,
+    "round_lost_honorable_close": 30
+  },
+
+  "exploration": {
+    "first_op_on_new_map": 100,
+    "strategic_point_discovered": 25,
+    "recon_report_validated_by_council": 50,
+    "ranger_division_bonus": "+25% sur tous les bonus exploration si division Ranger Corps ou Spec Ops",
+    "max_exploration_xp_per_session": 200
+  },
+
+  "time_participation": {
+    "xp_per_minute_present": 8,
+    "max_per_session_25min": 200,
+    "afk_threshold_pct": 50,
+    "afk_penalty": "XP_session = 0 si AFK > 50%"
+  },
+
+  "role_bonuses": {
+    "operation_commander": 100,
+    "strike_team_leader": 75,
+    "pack_leader": 40,
+    "marksman": 30,
+    "designated_sharpshooter": 50,
+    "heavy": 50,
+    "sword_berserker": 40,
+    "pilot_banshee_wraith": 40,
+    "driver_ghost": 20,
+    "saboteur": 60,
+    "field_engineer_rp": 30,
+    "ranger_jet_pack": 50,
+    "warrior_default": 0
+  },
+
+  "discipline_bonuses": {
+    "zero_violation_rp": 50,
+    "radio_comms_respected_ic": 25,
+    "ceremonial_phrases_used": 25,
+    "mvp_vote_winner": 100,
+    "honorable_duel_won_energy_sword": 50
+  },
+
+  "streak_bonuses": {
+    "first_op_player_lifetime": "XP_session_total * 1.5",
+    "five_consecutive_ops_in_14d": 200,
+    "mentor_minor_first_op": 50
+  },
+
+  "penalties": {
+    "team_kill_intentional": -200,
+    "metagaming_other_squad_voice": "XP_session * 0.5",
+    "afk_over_50pct": "XP_session = 0",
+    "insubordination_serious": -100,
+    "dishonorable_camping": -50
+  },
+
+  "session_xp_cap": {
+    "min": 0,
+    "max": 600,
+    "exception": "Bonus 'first op lifetime' peut dépasser 600 (×1.5). Bonus tueur de Spartan/Captain peut aussi dépasser temporairement."
+  },
+
+  "see_also": [
+    "configs/xp_rewards_unsc.json",
+    "configs/leveling.json",
+    "configs/ai_units_unsc.json",
+    "configs/map_discovery_xp.json"
+  ]
+}
